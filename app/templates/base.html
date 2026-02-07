@@ -11,25 +11,49 @@
 
     <!-- Application CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-    {% block css %} {% endblock%}
+    {% block css %} {% endblock %}
   </head>
   <body>
     <header>
-        {% include "header.html" %}
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('home') }}">FlaskApp</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about') }}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+
     <main>
-        <div class="container">
-            {% block main %}{% endblock %}
-        </div>
+      <div class="container">
+        {% block main %}{% endblock %}
+      </div>
     </main>
+
     <footer>
-        <div class="container">
-            {% include "footer.html" %}
-        </div>
+      <div class="container text-center py-3">
+        <p>&copy; {{ current_year if current_year else "2026" }} Flask Starter App</p>
+      </div>
     </footer>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Include Bootstrap JS -->
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-    {% block js %} {% endblock%}
+    {% block js %} {% endblock %}
   </body>
 </html>
